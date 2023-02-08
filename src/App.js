@@ -23,13 +23,16 @@ function App() {
   const [community, setCommunity] = useState(null);
   const [userLocation, setUserLocation] = useState(null);
 
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
-      setUser(user);
-    } else {
-      signInAnonymously(auth);
-    }
-  });
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      console.log("auth");
+      if (user) {
+        setUser(user);
+      } else {
+        signInAnonymously(auth);
+      }
+    });
+  }, []);
 
   return user ? (
     <div className="App">
