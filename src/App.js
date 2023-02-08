@@ -8,16 +8,26 @@ import {
   deleteDoc,
   doc,
 } from "firebase/firestore";
-import { db } from "./firebase";
+import { onAuthStateChanged, signInAnonymously } from "firebase/auth";
+import { auth, db } from "./firebase";
 import "./App.css";
 
 const MAPS_API_KEY = `${process.env.REACT_APP_MAPS_API_KEY}`;
 
-
 function App() {
+  const [user, setUser] = useState(null);
+
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      setUser(user);
+    } else {
+      signInAnonymously(auth);
+    }
+  });
+
   return (
     <div className="App">
-      <h1>Green Dot.</h1>
+      {user ? <h1>Green Dot.</h1> : <h1>Loading...</h1>}
     </div>
   );
 }
