@@ -1,16 +1,14 @@
-import React from 'react'
-import './UserLocationShareScreen.css'
+import React from "react";
+import "./UserLocationShareScreen.css";
 
-const UserLocationShareScreen = (props) => {
+const UserLocationShareScreen = ({ setUserLocation }) => {
+  console.log("UserLocationShareScreen");
   return (
     <div>
-    <div>UserLocationShareScreen</div>
-    <button onClick={() => props.displayPage('CommunityMap')}>
-  CommunityMap
-</button>
-</div>
+      <div>UserLocationShareScreen</div>
+      <button onClick={() => setUserLocation(true)}>CommunityMap</button>
+    </div>
+  );
+};
 
-  )
-}
-
-export default UserLocationShareScreen
+export default UserLocationShareScreen;
