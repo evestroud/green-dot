@@ -20,6 +20,8 @@ const MAPS_API_KEY = `${process.env.REACT_APP_MAPS_API_KEY}`;
 
 function App() {
   const [user, setUser] = useState(null);
+  const [community, setCommunity] = useState(null);
+  const [userLocation, setUserLocation] = useState(null);
 
   onAuthStateChanged(auth, (user) => {
     if (user) {
@@ -29,25 +31,18 @@ function App() {
     }
   });
 
-  const [page, setIsPage] = useState("WelcomePage");
-
-  const displayPage = (pageName) => {
-    setIsPage(pageName);
-  };
-
   return user ? (
     <div className="App">
       <h1>Green Dot.</h1>
-      {page == "WelcomePage" ? <WelcomePage displayPage={displayPage} /> : null}
-      {page == "CommunityMap" ? (
-        <CommunityMap displayPage={displayPage} />
-      ) : null}
-      {page == "CommunitySelector" ? (
-        <CommunitySelector displayPage={displayPage} />
-      ) : null}
-      {page == "UserLocationShareScreen" ? (
-        <UserLocationShareScreen displayPage={displayPage} />
-      ) : null}
+      {community ? (
+        userLocation ? (
+          <CommunityMap />
+        ) : (
+          <UserLocationShareScreen setUserLocation={setUserLocation} />
+        )
+      ) : (
+        <CommunitySelector setCommunity={setCommunity} />
+      )}
     </div>
   ) : (
     <h1>Loading...</h1>
