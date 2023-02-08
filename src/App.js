@@ -1,23 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import { GoogleMap, Marker, useLoadScript } from "@react-google-maps/api";
+import { useEffect, useRef, useState } from "react";
+import {
+  addDoc,
+  query,
+  collection,
+  onSnapshot,
+  deleteDoc,
+  doc,
+} from "firebase/firestore";
+import { db } from "./firebase";
+import "./App.css";
+
+const MAPS_API_KEY = `${process.env.REACT_APP_MAPS_API_KEY}`;
+
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Green Dot.</h1>
     </div>
   );
 }
