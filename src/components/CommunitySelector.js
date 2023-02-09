@@ -1,18 +1,18 @@
 import { useState, React, useRef } from "react";
 import { db } from "../firebase";
-import { getDoc, doc } from "firebase/firestore";
+import { getDoc, doc, collection, setDoc } from "firebase/firestore";
 import { customAlphabet } from "nanoid";
 
 const CommunitySelector = props => {
     const nanoid = customAlphabet("1234567890abcdef", 5);
-    const communityCode = useRef(nanoid()).current;
+    // const communityCode = useRef(nanoid()).current;
     const [code, setCode] = useState("");
 
     const queryDatabase = async () => {
         const docRef = doc(db, "communities", code);
         const docSnap = await getDoc(docRef);
         if (docSnap.data()) {
-            props.setCommunity(true);
+            props.setCommunity(code);
         } else {
             alert("Community code " + code + " does not yet exist.");
         }
@@ -23,11 +23,22 @@ const CommunitySelector = props => {
         console.log(code);
     };
 
-    const createNewCommunity = () => {
-        props.setCommunity(true);
-        setCode(communityCode);
-        console.log(communityCode);
+    const createNewCommunity = async () => {
+        const communities = collection(db, "communities");
+        const newCommunityCode = nanoid();
+        const docExists = (await getDoc(doc(db, "communities", newCommunityCode))).exists()
+        console.log(docExists)
+        while (docExists) {
+            newCommunityCode = nanoid();
+            docExists = (await getDoc(doc(db, "communities", newCommunityCode))).exists()
+            console.log(docExists)
+        }
+        setDoc(doc(db, "communities", newCommunityCode), {}).then(() => {
+            props.setCommunity(newCommunityCode);
+            console.log('this is the new community code' + newCommunityCode);
+        }).catch(e => console.log(e))
     };
+ 
 
     return (
         <div>

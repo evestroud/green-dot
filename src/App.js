@@ -16,8 +16,6 @@ import WelcomePage from "./components/welcomeComponents/WelcomePage";
 import CommunityMap from "./components/CommunityMap";
 import UserLocationShareScreen from "./components/UserLocationShareScreen";
 
-const MAPS_API_KEY = `${process.env.REACT_APP_MAPS_API_KEY}`;
-
 function App() {
     const [user, setUser] = useState(null);
     const [community, setCommunity] = useState(null);

@@ -1,12 +1,10 @@
 import React from "react";
 import "./UserLocationShareScreen.css";
 import { db } from "../firebase";
-import { doc, addDoc, setDoc, collection } from "firebase/firestore";
-import code from "./CommunitySelector";
+import { addDoc, collection } from "firebase/firestore";
 
 const UserLocationShareScreen = () => {
     const getCurrentLocation = () => {
-        console.log("called getCurrentLocation");
         navigator.geolocation.getCurrentPosition(res => {
             const [lat, lng] = [res.coords.latitude, res.coords.longitude];
             addMarkerToDb(lat, lng);
@@ -14,14 +12,18 @@ const UserLocationShareScreen = () => {
     };
 
     const addMarkerToDb = (lat, lng) => {
-        addDoc(collection(db, "communities", "5555"), { lat, lng });
-        console.log('ran addmarker')
+        addDoc(collection(db, "communities", "5555" /* This will be the CommunityCode*/, "markers"), {
+            lat,
+            lng
+        }).then(() => console.log("successfully added to DB"));
     };
 
     return (
         <div>
             <h1>Share Your Location</h1>
-            <button onClick={() => getCurrentLocation()}>Share Button</button>
+            <button onClick={() => getCurrentLocation()}>
+                Send Location to DB
+            </button>
         </div>
     );
 };
