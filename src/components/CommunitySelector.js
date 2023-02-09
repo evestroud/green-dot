@@ -1,17 +1,30 @@
 import { useState, React } from "react";
 import { db } from "../firebase";
-import { collection, query, getDocs } from "firebase/firestore";
+import { collection, query, getDoc, doc } from "firebase/firestore";
 
 const CommunitySelector = () => {
     const [code, setCode] = useState("");
+    console.log(typeof code);
+    console.log(code);
 
     const queryDatabase = async () => {
-        const q = query(collection(db, "communities"));
-        const querySnapshot = await getDocs(q)
-        querySnapshot.forEach(doc => {
-            console.log(doc.id, " => ", doc.data());
-        });
+        const docRef = doc(db, "communities", code);
+        const docSnap = await getDoc(docRef);
+        if (docSnap.data()) {
+            console.log("yes");
+        } else {
+            console.log("no");
+        }
     };
+
+    // const queryDatabase = async () => {
+    //     const q = query(doc(db, "communities"));
+    //     const querySnapshot = await getDocs(q)
+    //     console.log(querySnapshot)
+    //     querySnapshot.forEach(doc => {
+    //         console.log(doc.id, " => ", doc.data());
+    //     });
+    // };
 
     const handleCodeSubmit = event => {
         setCode(event.target.value);
