@@ -1,7 +1,7 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState } from "react";
 import { GoogleMap, Marker, useLoadScript } from "@react-google-maps/api";
-import './CommunityMap.css'
-import share from "./assets/share.png"
+import "./CommunityMap.css";
+import share from "./assets/share.png";
 
 const MAPS_API_KEY = `${process.env.REACT_APP_MAPS_API_KEY}`;
 
@@ -16,7 +16,7 @@ const CommunityMap = () => {
 
   return (
     <div id="community-map">
-    isLoaded ? (
+      {isLoaded ? (
         <GoogleMap
           mapContainerClassName="map-container"
           onTilesLoaded={() => {
@@ -26,13 +26,12 @@ const CommunityMap = () => {
           center={center}
           zoom={zoom}
           onLoad={(map) => (ref.current = map)}
-        >
-        </GoogleMap>
+        ></GoogleMap>
       ) : (
         <h2>Loading map...</h2>
-      )
+      )}
     </div>
-  )
-}
+  );
+};
 
-export default CommunityMap
+export default CommunityMap;
