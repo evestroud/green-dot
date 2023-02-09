@@ -1,8 +1,11 @@
-import { useState, React } from "react";
+import { useState, React, useRef } from "react";
 import { db } from "../firebase";
 import { getDoc, doc } from "firebase/firestore";
+import { customAlphabet } from "nanoid";
 
 const CommunitySelector = props => {
+    const nanoid = customAlphabet("1234567890abcdef", 5);
+    const communityCode = useRef(nanoid()).current;
     const [code, setCode] = useState("");
 
     const queryDatabase = async () => {
@@ -20,6 +23,13 @@ const CommunitySelector = props => {
         console.log(code);
     };
 
+    const createNewCommunity = () => {
+      props.setCommunity(true);
+      setCode(communityCode);
+      console.log(communityCode)
+
+    }
+
     return (
         <div>
             <h4>CommunitySelector</h4>
@@ -30,7 +40,7 @@ const CommunitySelector = props => {
                 value={code}
             />
             <button onClick={queryDatabase}>Submit</button>
-            <button onClick={() => props.setCommunity(true)}>
+            <button onClick={createNewCommunity}>
                 <h4>Or click here to create a new community.</h4>
             </button>
         </div>
