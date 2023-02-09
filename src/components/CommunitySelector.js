@@ -26,19 +26,26 @@ const CommunitySelector = props => {
     const createNewCommunity = async () => {
         const communities = collection(db, "communities");
         const newCommunityCode = nanoid();
-        const docExists = (await getDoc(doc(db, "communities", newCommunityCode))).exists()
-        console.log(docExists)
+        const docExists = (await getDoc(
+            doc(db, "communities", newCommunityCode)
+        )).exists();
+        console.log(docExists);
         while (docExists) {
             newCommunityCode = nanoid();
-            docExists = (await getDoc(doc(db, "communities", newCommunityCode))).exists()
-            console.log(docExists)
+            docExists = (await getDoc(
+                doc(db, "communities", newCommunityCode)
+            )).exists();
+            console.log(docExists);
         }
-        setDoc(doc(db, "communities", newCommunityCode), {}).then(() => {
-            props.setCommunity(newCommunityCode);
-            console.log('this is the new community code' + newCommunityCode);
-        }).catch(e => console.log(e))
+        setDoc(doc(db, "communities", newCommunityCode), {})
+            .then(() => {
+                props.setCommunity(newCommunityCode);
+                console.log(
+                    "this is the new community code" + newCommunityCode
+                );
+            })
+            .catch(e => console.log(e));
     };
- 
 
     return (
         <div>

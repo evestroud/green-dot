@@ -3,7 +3,7 @@ import "./UserLocationShareScreen.css";
 import { db } from "../firebase";
 import { addDoc, collection } from "firebase/firestore";
 
-const UserLocationShareScreen = () => {
+const UserLocationShareScreen = props => {
     const getCurrentLocation = () => {
         navigator.geolocation.getCurrentPosition(res => {
             const [lat, lng] = [res.coords.latitude, res.coords.longitude];
@@ -12,7 +12,7 @@ const UserLocationShareScreen = () => {
     };
 
     const addMarkerToDb = (lat, lng) => {
-        addDoc(collection(db, "communities", "5555" /* This will be the CommunityCode*/, "markers"), {
+        addDoc(collection(db, "communities", props.community, "markers"), {
             lat,
             lng
         }).then(() => console.log("successfully added to DB"));
