@@ -1,23 +1,34 @@
-import './WelcomePage.css'
-import {useState, React } from 'react'
+import "./WelcomePage.css";
+import { useState, React } from "react";
+import Welcome1Code from "./Welcome1Code";
+import Welcome2Share from "./Welcome2Share";
 
-const WelcomePage = props => {
-  const [welcomePage, setIsWelcomePage] = useState("Welcome1")
+const WelcomePage = ({skipWelcome}) => {
+    const [welcomePage, setIsWelcomePage] = useState("Welcome1");
 
-  const displayWelcomePage = pageName => {
-    setIsWelcomePage(pageName)
-  }
-  return (
-    <div>
-      <div>WelcomePage</div>
-      <button onClick={() => props.displayPage('CommunitySelector')}>
-        CommunitySelector
-      </button>
-      {/* {welcomePage == "Welcome1" ? <Welcome1 displayWelcome={displayWelcomePage}/> : null } */}
-    </div>
-  )
-}
+    const displayWelcomePage = pageName => {
+        setIsWelcomePage(pageName);
+    };
 
-export default WelcomePage
+    return (
+        <div>
+            {welcomePage === "Welcome1"
+                && <div>
+                      <div>WelcomePage</div>
+                      <button
+                          onClick={() => displayWelcomePage("Welcome1Code")}
+                      >
+                          Next Page
+                      </button>
+                      <button onClick={()=> skipWelcome()}>Skip Welcome</button>
+                  </div>
+                }
+            {welcomePage === "Welcome1Code"
+                && <Welcome1Code displayWelcome={displayWelcomePage} />
+                }
+            {welcomePage === "Welcome2Share" && <Welcome2Share /> }
+        </div>
+    );
+};
 
-
+export default WelcomePage;
