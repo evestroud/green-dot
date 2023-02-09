@@ -24,11 +24,10 @@ const CommunitySelector = props => {
     };
 
     const createNewCommunity = () => {
-      props.setCommunity(true);
-      setCode(communityCode);
-      console.log(communityCode)
-
-    }
+        props.setCommunity(true);
+        setCode(communityCode);
+        console.log(communityCode);
+    };
 
     return (
         <div>
@@ -38,6 +37,11 @@ const CommunitySelector = props => {
                 onChange={e => handleCodeSubmit(e)}
                 placeholder="Enter your community code."
                 value={code}
+                onKeyDown={e => {
+                    if (e.key == "Enter") {
+                        queryDatabase();
+                    }
+                }}
             />
             <button onClick={queryDatabase}>Submit</button>
             <button onClick={createNewCommunity}>

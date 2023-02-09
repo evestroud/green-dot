@@ -36,20 +36,21 @@ function App() {
     }, []);
 
     const skipWelcome = () => {
-      setWelcome(false)
-    }
+        setWelcome(false);
+    };
 
     return user
         ? <div className="App">
-              <h1>Green Dot.</h1>
-              {welcome == true ? <WelcomePage skipWelcome={skipWelcome}/> : 
-              (community ? ( userLocation ? (
-              <CommunityMap />
-              ) : (
-              <UserLocationShareScreen setUserLocation={setUserLocation} />
-              ) ) : (
-              <CommunitySelector setCommunity={setCommunity} />
-              ))}
+              {/* <h1>Green Dot.</h1> */}
+              {welcome == true
+                  ? <WelcomePage skipWelcome={skipWelcome} />
+                  : community
+                    ? userLocation
+                      ? <CommunityMap />
+                      : <UserLocationShareScreen
+                            setUserLocation={setUserLocation}
+                        />
+                    : <CommunitySelector setCommunity={setCommunity} />}
           </div>
         : <h1>Loading...</h1>;
 }

@@ -17,7 +17,8 @@ const WelcomePage = ({ skipWelcome }) => {
         <div>
             {welcomePage === "Welcome1" &&
                 <div>
-                    <div>WelcomePage</div>
+                    <h1>Welcome to Green Dot</h1>
+                    <h2>Connecting in REAL life just got easier.</h2>
                     <button onClick={() => displayWelcomePage("Welcome1Code")}>
                         Next Page
                     </button>
