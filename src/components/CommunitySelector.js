@@ -1,30 +1,19 @@
 import { useState, React } from "react";
 import { db } from "../firebase";
-import { collection, query, getDoc, doc } from "firebase/firestore";
+import { getDoc, doc } from "firebase/firestore";
 
-const CommunitySelector = () => {
+const CommunitySelector = props => {
     const [code, setCode] = useState("");
-    console.log(typeof code);
-    console.log(code);
 
     const queryDatabase = async () => {
         const docRef = doc(db, "communities", code);
         const docSnap = await getDoc(docRef);
         if (docSnap.data()) {
-            console.log("yes");
+            props.setCommunity(true);
         } else {
-            console.log("no");
+            alert("Community code " + code + " does not yet exist.");
         }
     };
-
-    // const queryDatabase = async () => {
-    //     const q = query(doc(db, "communities"));
-    //     const querySnapshot = await getDocs(q)
-    //     console.log(querySnapshot)
-    //     querySnapshot.forEach(doc => {
-    //         console.log(doc.id, " => ", doc.data());
-    //     });
-    // };
 
     const handleCodeSubmit = event => {
         setCode(event.target.value);
@@ -33,6 +22,7 @@ const CommunitySelector = () => {
 
     return (
         <div>
+            <h4>CommunitySelector</h4>
             <h1>Please enter your Green Dot community code.</h1>
             <input
                 onChange={e => handleCodeSubmit(e)}
@@ -40,6 +30,9 @@ const CommunitySelector = () => {
                 value={code}
             />
             <button onClick={queryDatabase}>Submit</button>
+            <button onClick={() => props.setCommunity(true)}>
+                <h4>Or click here to create a new community.</h4>
+            </button>
         </div>
     );
 };
