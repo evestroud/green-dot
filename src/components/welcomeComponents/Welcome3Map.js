@@ -10,7 +10,7 @@ const Welcome3Map = props => {
                 className="back"
                 onClick={() => props.displayWelcome("Welcome2Share")}
             >
-                {"<<<"}
+                {"<<"}
             </button>
             <h2 className="grant">
                 Be sure to grant Green Dot permission to view your location

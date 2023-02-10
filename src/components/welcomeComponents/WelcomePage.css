@@ -44,6 +44,7 @@
 }
 
 .next {
+    position: relative;
     margin-left: 275px;
 }
 
