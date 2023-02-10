@@ -46,7 +46,7 @@ function App() {
                     ? userLocation
                       ? <CommunityMap />
                       : <UserLocationShareScreen
-                            setUserLocation={setUserLocation}
+                            setUserLocation={setUserLocation} community={community}
                         />
                     : <CommunitySelector setCommunity={setCommunity} />}
           </div>
