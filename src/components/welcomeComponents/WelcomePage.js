@@ -15,36 +15,54 @@ const WelcomePage = ({ skipWelcome }) => {
         setIsWelcomePage(pageName);
     };
 
-    return <div>
-            {welcomePage === "Welcome1" && <div>
+    return (
+        <div>
+            {welcomePage === "Welcome1" &&
+                <div>
                     <img className="mapdemo" src={mapdemo} />
                     <h1 className="welcome">Welcome to Green Dot</h1>
                     <h2 className="connecting">
                         Connecting in REAL life just got easier.
                     </h2>
-                
-    
-                    <button className="next"
+
+                    <button
+                        className="next"
                         onClick={() => displayWelcomePage("Welcome1Code")}
                     >
                         Next
                     </button>
-               
-            
-                    <img className="buttons1" src={buttons1} />
-            
+
+                    <img className="buttons" src={buttons1} />
                 </div>}
-            {welcomePage === "Welcome1Code" && <Welcome1Code displayWelcome={displayWelcomePage} />}
-            {welcomePage === "Welcome2Share" && <Welcome2Share displayWelcome={displayWelcomePage} />}
-            {welcomePage === "Welcome3Map" && <Welcome3Map displayWelcome={displayWelcomePage} />}
-            {welcomePage === "Welcome4GreenDots" && <Welcome4GreenDots displayWelcome={displayWelcomePage} />}
-            {welcomePage === "Welcome5Groups" && <Welcome5Groups displayWelcome={displayWelcomePage} skipWelcome={skipWelcome} />}
-            {welcomePage === "Welcome5Groups" ? <button className="skip" onClick={() => skipWelcome()}>
+            {welcomePage === "Welcome1Code" &&
+                <Welcome1Code displayWelcome={displayWelcomePage} />}
+            {welcomePage === "Welcome2Share" &&
+                <Welcome2Share displayWelcome={displayWelcomePage} />}
+            {welcomePage === "Welcome3Map" &&
+                <Welcome3Map displayWelcome={displayWelcomePage} />}
+            {welcomePage === "Welcome4GreenDots" &&
+                <Welcome4GreenDots displayWelcome={displayWelcomePage} />}
+            {welcomePage === "Welcome5Groups" &&
+                <Welcome5Groups
+                    displayWelcome={displayWelcomePage}
+                    skipWelcome={skipWelcome}
+                />}
+            {welcomePage === "Welcome5Groups"
+                ? <button className="ready" onClick={() => skipWelcome()}>
                       I'm Ready
-                  </button> : <button className="skip" onClick={() => skipWelcome()}>
-                      Skip Welcome
-                  </button>}
-        </div>;
+                  </button>
+                : welcomePage === "Welcome4GreenDots"
+                  ? <button
+                        className="skip-final"
+                        onClick={() => skipWelcome()}
+                    >
+                        Skip Welcome
+                    </button>
+                  : <button className="skip" onClick={() => skipWelcome()}>
+                        Skip Welcome
+                    </button>}
+        </div>
+    );
 };
 
 export default WelcomePage;

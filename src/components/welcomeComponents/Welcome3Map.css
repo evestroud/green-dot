@@ -1,0 +1,17 @@
+.grant {
+    width: 353px;
+    height: 60px;
+    text-align: left;
+    margin-left: 40px;
+    margin-top: 30px;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 30px;
+    color: #000000;
+}
+
+.sharelocation {
+    margin-top: 0px;
+    height: 380px;
+}
+

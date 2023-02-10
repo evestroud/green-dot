@@ -1,17 +1,21 @@
 import React from "react";
+import "./Welcome4GreenDots.css";
+import mapdemo from "../assets/mapdemo.png"
 
 const Welcome4GreenDots = props => {
     return <div>
-            <h2>
+            <button className="back" onClick={() => props.displayWelcome("Welcome3Map")}>
+                {"<<"}
+            </button>
+            <h2 className="message-final">
                 Congratulations! You can now see your community members on
                 Green Dot.
             </h2>
-            <button onClick={() => props.displayWelcome("Welcome3Map")}>
-                Back
-            </button>
-            <button onClick={() => props.displayWelcome("Welcome5Groups")}>
+
+            <button className="next-final" onClick={() => props.displayWelcome("Welcome5Groups")}>
                 Next
             </button>
+            <img className="map-final" src={mapdemo} />
         </div>;
 };
 

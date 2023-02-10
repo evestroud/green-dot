@@ -10,13 +10,15 @@ const Welcome1Code = props => {
             <h2 className="message">
                 First, you will select your community using your community code.
             </h2>
-            <img className="communitycode" src={communitycodeasset}/>
-            <img className="keyboard" src={keyboardasset}/>
-            <button className="next" onClick={() => props.displayWelcome("Welcome2Share")}>
+            <img className="communitycode" src={communitycodeasset} />
+            <img className="keyboard" src={keyboardasset} />
+            <button
+                className="next"
+                onClick={() => props.displayWelcome("Welcome2Share")}
+            >
                 Next
             </button>
-            <img className="buttons2" src={buttons2}/>
-            
+            <img className="buttons" src={buttons2} />
         </div>
     );
 };
