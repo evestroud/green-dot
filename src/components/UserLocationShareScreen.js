@@ -11,7 +11,7 @@ const UserLocationShareScreen = ({ community, setUserLocation, user }) => {
       const newMarker = doc(communityDoc, "markers", user.uid);
       await setDoc(newMarker, { lat, lng });
       const postedMarker = await getDoc(newMarker);
-      setUserLocation(postedMarker)
+      setUserLocation(true)
     });
   };
 
