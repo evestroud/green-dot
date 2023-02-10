@@ -44,11 +44,12 @@ function App() {
         <WelcomePage skipWelcome={skipWelcome} />
       ) : community ? (
         userLocation ? (
-          <CommunityMap />
+          <CommunityMap community={community} />
         ) : (
           <UserLocationShareScreen
             setUserLocation={setUserLocation}
             community={community}
+            user={user}
           />
         )
       ) : (
