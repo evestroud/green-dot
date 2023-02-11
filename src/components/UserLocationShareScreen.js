@@ -18,6 +18,7 @@ const UserLocationShareScreen = ({ community, setUserLocation, user }) => {
   return (
     <div>
       <h1>Share Your Location</h1>
+      <p>Community code: {community}</p>
       <button onClick={() => shareLocation()}>Send Location to DB</button>
     </div>
   );

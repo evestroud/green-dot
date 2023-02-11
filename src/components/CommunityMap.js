@@ -43,6 +43,7 @@ const CommunityMap = ({ community, user, setUserLocation }) => {
     <div id="community-map">
       {isLoaded ? (
         <>
+          <p>Community code: {community}</p>
           <GoogleMap
             mapContainerClassName="map-container"
             onTilesLoaded={() => {
