@@ -11,8 +11,10 @@ import communitycodeasset from "../assets/communitycodeasset.png";
 import keyboardasset from "../assets/keyboardasset.png";
 import share from "../assets/share.png";
 import sharelocation from "../assets/sharelocation.png";
+import javajunction from "../assets/javajunction.png";
+import ready from "../assets/ready.png";
 
-const WelcomePage = () => {
+const WelcomePage = (props) => {
     const welcome6 = {
         name: "welcome6",
         image1: null,
@@ -26,14 +28,11 @@ const WelcomePage = () => {
                 <li id="andYou">...and you!</li>
             </ul>
         ),
-        image2: (
-            <div className="mapdemo">
-                {mapdemo}
-            </div>
-        ),
+        image2: javajunction,
         image3: null, // next: welcome6,
         greenDots: "",
-        skip: true
+        skip: true,
+        ready: ready
     };
     const welcome5 = {
         name: "welcome5",
@@ -122,6 +121,7 @@ const WelcomePage = () => {
 
     return (
         <div>
+            
             <SingleWelcomePage
                 classNameRender={welcomePage.name}
                 image1={welcomePage.image1}
@@ -131,9 +131,10 @@ const WelcomePage = () => {
                 image3={welcomePage.image3}
                 greenDots={welcomePage.greenDots}
                 next={welcomePage.next}
-                skip={welcomePage.skip}
                 back={welcomePage.back}
+                skipWelcome={props.skipWelcome}
                 setWelcome={setIsWelcomePage}
+                ready={welcomePage.ready}
             />
         </div>
     );
