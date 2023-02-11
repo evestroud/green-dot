@@ -1,7 +1,14 @@
 import React from "react";
 import "./UserLocationShareScreen.css";
 import { db } from "../firebase";
-import { addDoc, collection, doc, getDoc, setDoc } from "firebase/firestore";
+import {
+  addDoc,
+  collection,
+  doc,
+  getDoc,
+  setDoc,
+  serverTimestamp,
+} from "firebase/firestore";
 
 const UserLocationShareScreen = ({ community, setUserLocation, user }) => {
   const shareLocation = () => {
@@ -9,9 +16,9 @@ const UserLocationShareScreen = ({ community, setUserLocation, user }) => {
       const [lat, lng] = [res.coords.latitude, res.coords.longitude];
       const communityDoc = doc(db, "communities", community);
       const newMarker = doc(communityDoc, "markers", user.uid);
-      await setDoc(newMarker, { lat, lng });
-      const postedMarker = await getDoc(newMarker);
-      setUserLocation(true)
+      await setDoc(newMarker, { lat, lng, timestamp: serverTimestamp() });
+      // const postedMarker = await getDoc(newMarker);
+      setUserLocation(true);
     });
   };
 
