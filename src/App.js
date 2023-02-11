@@ -57,7 +57,11 @@ function App() {
           />
         )
       ) : (
-        <CommunitySelector setCommunity={setCommunity} />
+        <CommunitySelector
+          setCommunity={setCommunity}
+          user={user}
+          setUserLocation={setUserLocation}
+        />
       )}
     </div>
   ) : (

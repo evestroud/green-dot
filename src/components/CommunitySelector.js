@@ -3,15 +3,19 @@ import { db } from "../firebase";
 import { getDoc, doc, collection, setDoc } from "firebase/firestore";
 import { customAlphabet } from "nanoid";
 
-const CommunitySelector = (props) => {
+const CommunitySelector = ({ user, setCommunity, setUserLocation }) => {
   const nanoid = customAlphabet("1234567890abcdef", 5);
   const [code, setCode] = useState("");
 
   const queryDatabase = async () => {
-    const docRef = doc(db, "communities", code);
-    const docSnap = await getDoc(docRef);
-    if (docSnap.data()) {
-      props.setCommunity(code);
+    const ref = doc(db, "communities", code);
+    const snap = await getDoc(ref);
+    if (snap.data()) {
+      const userLocation = await getDoc(doc(ref, "markers", user.uid))
+      if (userLocation.exists()) {
+        setUserLocation(true)
+      }
+      setCommunity(code);
     } else {
       alert("Community code " + code + " does not yet exist.");
     }
@@ -35,7 +39,7 @@ const CommunitySelector = (props) => {
     }
     setDoc(doc(db, "communities", newCommunityCode), {})
       .then(() => {
-        props.setCommunity(newCommunityCode);
+        setCommunity(newCommunityCode);
       })
       .catch((e) => console.log(e));
   };
