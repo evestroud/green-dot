@@ -39,6 +39,7 @@
 }
 
 .buttons {
+    /* position: absolute; */
     max-width: 240px;
     padding-top: 5px;
 }

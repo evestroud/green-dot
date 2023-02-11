@@ -7,6 +7,11 @@ import Welcome4GreenDots from "./Welcome4GreenDots";
 import Welcome5Groups from "./Welcome5Groups";
 import mapdemo from "../assets/mapdemo.png";
 import buttons1 from "../assets/buttons1.png";
+import buttons2 from "../assets/buttons2.png";
+import buttons3 from "../assets/buttons3.png";
+import buttons4 from "../assets/buttons4.png";
+import Welcome from "./Welcome";
+import communitycodeasset from "../assets/communitycodeasset.png"
 
 const WelcomePage = ({ skipWelcome }) => {
     const [welcomePage, setIsWelcomePage] = useState("Welcome1");
@@ -14,6 +19,7 @@ const WelcomePage = ({ skipWelcome }) => {
     const displayWelcomePage = pageName => {
         setIsWelcomePage(pageName);
     };
+
 
     return (
         <div>
@@ -35,11 +41,11 @@ const WelcomePage = ({ skipWelcome }) => {
                     <img className="buttons" src={buttons1} />
                 </div>}
             {welcomePage === "Welcome1Code" &&
-                <Welcome1Code displayWelcome={displayWelcomePage} />}
+                <Welcome1Code communitycodeasset={communitycodeasset}displayWelcome={displayWelcomePage} button={buttons2}/>}
             {welcomePage === "Welcome2Share" &&
-                <Welcome2Share displayWelcome={displayWelcomePage} />}
+                <Welcome2Share displayWelcome={displayWelcomePage} button={buttons3}/>}
             {welcomePage === "Welcome3Map" &&
-                <Welcome3Map displayWelcome={displayWelcomePage} />}
+                <Welcome3Map displayWelcome={displayWelcomePage} button={buttons4}/>}
             {welcomePage === "Welcome4GreenDots" &&
                 <Welcome4GreenDots displayWelcome={displayWelcomePage} />}
             {welcomePage === "Welcome5Groups" &&
