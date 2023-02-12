@@ -1,0 +1,40 @@
+h1,
+input {
+    margin-left: 20px;
+}
+
+input {
+    border-radius: 100px;
+    padding: 10px;
+    width: 250px;
+    height: 25px;
+}
+.partial-dot-div {
+    display: flex;
+    justify-content: end;
+    margin-top: 150px;
+}
+
+.partial-dot {
+    height: 300px;
+}
+
+.submit-div {
+    display: flex;
+    justify-content: center;
+}
+
+.submit-div button {
+    color: white;
+    background: #000000;
+    border-radius: 100px;
+    width: 100px;
+    height: 30px;
+    font-size: 15px;
+}
+
+.create {
+    all: unset;
+    cursor: pointer;
+    margin-left: 40px;
+}

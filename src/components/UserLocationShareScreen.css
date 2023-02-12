@@ -1,0 +1,19 @@
+.share-screen {
+    display: flex;
+    justify-content: center;
+}
+.share-header {
+    font-size: 25px;
+    margin: 35px;
+    padding-top: 20px;
+    line-height: 40px;
+}
+
+.share-location {
+    all: unset;
+    cursor: pointer;
+}
+
+.share-location img {
+    width: 330px;
+}

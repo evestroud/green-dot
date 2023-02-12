@@ -1,0 +1,193 @@
+h1 {
+    font-size: 44px;
+}
+h2 {
+    font-size: 20px;
+}
+
+.back-button,
+.header-text,
+.sub-text {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.sub-text {
+    margin-bottom: -20px;
+    line-height: 30px;
+}
+
+.skip-next {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    top: 630px;
+    width: 404px;
+}
+
+.next-page {
+    color: white;
+    background: #000000;
+    border-radius: 100px;
+    width: 120px;
+    height: 30px;
+    font-size: 15px;
+    margin-left: 150px;
+}
+
+.header-text {
+    padding-bottom: 0px;
+    margin-bottom: -20px;
+}
+
+.image1 img {
+    width: 404px;
+}
+
+.back-button {
+    display: flexbox;
+    justify-content: flex-start;
+    /* background-color: blue; */
+}
+
+.back-button button {
+    background-color: transparent;
+    border-style: none;
+    font-size: 25px;
+    padding: 0px;
+    padding-bottom: 10px;
+    margin: 0px;
+}
+.green-dots {
+    /* background-color: yellow; */
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    top: 690px;
+    width: 404px;
+}
+.green-dots img {
+    width: 350px;
+}
+
+.welcome1 h1 {
+    margin-top: 15px;
+    margin-left: 0px;
+}
+
+.welcome1 .back-button {
+    display: none;
+}
+
+.welcome1 .image1 {
+    margin-top: -20px;
+}
+
+.welcome2 .image1 {
+    display: none;
+}
+
+.welcome2 .image2 {
+    padding-top: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+.welcome2 .image2 img {
+    width: 370px;
+}
+
+.welcome2 .image3 img {
+    width: 404px;
+    margin-top: 40px;
+}
+
+.welcome3 .image1 {
+    display: none;
+}
+
+.welcome3 .image2 {
+    padding-top: 55px;
+    display: flex;
+    justify-content: center;
+}
+.welcome3 .image2 img {
+    width: 350px;
+}
+
+.welcome4 .image1 {
+    display: none;
+}
+
+.welcome4 .image2 img {
+    padding-top: 20px;
+    width: 404px;
+}
+
+.welcome5 .image1 {
+    display: none;
+}
+
+.welcome5 .image2 img {
+    padding-top: 20px;
+    width: 404px;
+}
+
+.welcome6 .image1 {
+    display: none;
+}
+
+.welcome6 h1 {
+    font-size: 50px;
+    line-height: 43px;
+}
+.welcome6 .image2 img {
+    padding-top: 10px;
+    width: 404px;
+}
+
+.welcome6 .header-text {
+    margin-top: -20px;
+    margin-bottom: -20px;
+}
+
+.welcome6 .sub-text li {
+    font-size: 19px;
+    line-height: 25px;
+    letter-spacing: 0.7px;
+}
+
+.ready-div {
+    padding-top: 15px;
+    display: flex;
+    justify-content: center;
+}
+
+.ready {
+    width: 300px;
+}
+
+.welcome6 .skip-next {
+    display: none;
+}
+
+.skip {
+    all: unset;
+    cursor: pointer;
+    width: 200px;
+    margin-left: 20px;
+    color: purple;
+}
+
+.skip:focus {
+    outline: orange 5px auto;
+}
+
+.ready-button {
+    all: unset;
+    cursor: pointer;
+}
+
+button {
+    cursor: pointer;
+}

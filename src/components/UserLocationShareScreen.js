@@ -1,15 +1,8 @@
 import React from "react";
 import "./UserLocationShareScreen.css";
 import { db } from "../firebase";
-import {
-  addDoc,
-  collection,
-  doc,
-  getDoc,
-  setDoc,
-  serverTimestamp,
-  Timestamp,
-} from "firebase/firestore";
+import { doc, getDoc, setDoc, serverTimestamp } from "firebase/firestore";
+import share from "../components/assets/share.png";
 
 const UserLocationShareScreen = ({ community, setUserLocation, user }) => {
   const shareLocation = () => {
@@ -35,9 +28,15 @@ const UserLocationShareScreen = ({ community, setUserLocation, user }) => {
 
   return (
     <div>
-      <h1>Share Your Location</h1>
+      <h2 className="share-header">
+        Share your location to view your Green Dot community members.
+      </h2>
       <p>Community code: {community}</p>
-      <button onClick={() => shareLocation()}>Send Location to DB</button>
+      <div className="share-screen">
+        <button className="share-location" onClick={() => shareLocation()}>
+          <img src={share} />
+        </button>
+      </div>
     </div>
   );
 };
