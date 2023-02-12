@@ -11,10 +11,13 @@ const CommunitySelector = ({ user, setCommunity, setUserLocation }) => {
     const ref = doc(db, "communities", code);
     const snap = await getDoc(ref);
     if (snap.data()) {
-      const userLocation = await getDoc(doc(ref, "markers", user.uid))
-      if (userLocation.exists()) {
-        setUserLocation(true)
-      }
+      getDoc(doc(ref, "markers", user.uid))
+        .then((userLocation) => {
+          if (userLocation.data().expiration) {
+            setUserLocation(true);
+          }
+        })
+        .catch(() => null);
       setCommunity(code);
     } else {
       alert("Community code " + code + " does not yet exist.");

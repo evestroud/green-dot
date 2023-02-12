@@ -8,6 +8,8 @@ import {
   doc,
   onSnapshot,
   query,
+  Timestamp,
+  where,
 } from "firebase/firestore";
 import { db, auth } from "../firebase";
 
@@ -20,19 +22,40 @@ const CommunityMap = ({ community, user, setUserLocation }) => {
   const [markers, setMarkers] = useState([]);
   const [center, setCenter] = useState({ lat: 39, lng: -95 });
   const [zoom, setZoom] = useState(4);
+  const [refreshListener, setRefreshListener] = useState(0);
   const ref = useRef(null);
 
   useEffect(() => {
-    const q = query(collection(doc(db, "communities", community), "markers"));
+    const q = query(
+      collection(doc(db, "communities", community), "markers"),
+      where("expiration", ">", Timestamp.now())
+    );
 
-    const unsubscribe = onSnapshot(q, (QuerySnapshot) => {
-      let markers = [];
-      QuerySnapshot.forEach((marker) => {
-        markers.push({ ...marker.data(), id: marker.id });
-      });
-      setMarkers(markers);
-    });
-  }, []);
+    const unsubscribe = onSnapshot(
+      q,
+      (QuerySnapshot) => {
+        let markers = [];
+        QuerySnapshot.forEach((marker) => {
+          markers.push({ ...marker.data(), id: marker.id });
+        });
+        setMarkers(markers);
+      },
+      (e) => {
+        if (refreshListener < 6) {
+          setTimeout(() => {
+            console.log(
+              "An error has occurred, trying again in ten seconds..."
+            );
+            setRefreshListener(refreshListener + 1);
+          });
+        } else {
+          console.log("Aborting retry");
+          console.log(e);
+          stopShareLocation();
+        }
+      }
+    );
+  }, [refreshListener]);
 
   const stopShareLocation = async () => {
     await deleteDoc(doc(db, "communities", community, "markers", user.uid));
