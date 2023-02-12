@@ -2,10 +2,9 @@ import { useState, React } from "react";
 import "./SingleWelcomePage.css";
 
 const SingleWelcomePage = props => {
-    return (
-        <div className={props.classNameRender}>
+    return <div className={props.classNameRender}>
             <div className="back-button">
-                <button onClick={() => props.setWelcome(props.back)}>
+                <button onClick={() => props.goBack(props.back)}>
                     {"<<"}
                 </button>
             </div>
@@ -33,10 +32,7 @@ const SingleWelcomePage = props => {
                 <button className="skip" onClick={() => props.skipWelcome()}>
                     Skip Intro
                 </button>
-                <button
-                    className="next-page"
-                    onClick={() => props.setWelcome(props.next)}
-                >
+                <button className="next-page" onClick={() => props.setWelcome(props.next)}>
                     Next
                 </button>
             </div>
@@ -44,10 +40,9 @@ const SingleWelcomePage = props => {
                 <img src={props.greenDots} />
             </div>
             <div className="ready-div">
-                <img className="ready" src={props.ready} />
+                {props.ready}
             </div>
-        </div>
-    );
+        </div>;
 };
 
 export default SingleWelcomePage;

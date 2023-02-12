@@ -153,3 +153,22 @@ h2 {
 .skip:focus {
     outline: orange 5px auto;
 }
+
+.ready-button {
+    all: unset;
+    cursor: pointer;
+}
+
+button {
+    cursor: pointer;
+}
+
+.partial-dot-div {
+    display: flex;
+    justify-content: end;
+    margin-top: 120px;
+}
+
+.partial-dot {
+    height: 300px;
+}

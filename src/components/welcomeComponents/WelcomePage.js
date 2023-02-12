@@ -1,5 +1,5 @@
 import "./WelcomePage.css";
-import { useRef, useState, React } from "react";
+import { useState, React } from "react";
 import SingleWelcomePage from "./SingleWelcomePage";
 import buttons1 from "../assets/buttons1.png";
 import buttons2 from "../assets/buttons2.png";
@@ -14,7 +14,7 @@ import sharelocation from "../assets/sharelocation.png";
 import javajunction from "../assets/javajunction.png";
 import ready from "../assets/ready.png";
 
-const WelcomePage = (props) => {
+const WelcomePage = props => {
     const welcome6 = {
         name: "welcome6",
         image1: null,
@@ -29,10 +29,17 @@ const WelcomePage = (props) => {
             </ul>
         ),
         image2: javajunction,
-        image3: null, // next: welcome6,
+        image3: null,
         greenDots: "",
-        skip: true,
-        ready: ready
+        ready: (
+            <button
+                className="ready-button"
+                onClick={() => props.skipWelcome()}
+            >
+                <img className="ready" src={ready} />
+            </button>
+        ),
+        back: "welcome5"
     };
     const welcome5 = {
         name: "welcome5",
@@ -44,10 +51,8 @@ const WelcomePage = (props) => {
         image3: null,
         next: welcome6,
         greenDots: buttons5,
-        skip: true
+        back: "welcome4"
     };
-    // back: welcome3
-
     const welcome4 = {
         name: "welcome4",
         image1: null,
@@ -57,8 +62,8 @@ const WelcomePage = (props) => {
         image3: null,
         greenDots: buttons4,
         next: welcome5,
-        skip: true
-        // back: welcome3
+        skip: true,
+        back: "welcome3"
     };
     const welcome3 = {
         name: "welcome3",
@@ -70,8 +75,8 @@ const WelcomePage = (props) => {
         image3: null,
         greenDots: buttons3,
         next: welcome4,
-        skip: true
-        // back: welcome2
+        skip: true,
+        back: "welcome2"
     };
     const welcome2 = {
         name: "welcome2",
@@ -96,7 +101,6 @@ const WelcomePage = (props) => {
         next: welcome2,
         skip: true
     };
-    // back: null
     const [welcomePage, setIsWelcomePage] = useState(welcome1);
 
     const goBack = page => {
@@ -112,16 +116,15 @@ const WelcomePage = (props) => {
         if (page == "welcome4") {
             setIsWelcomePage(welcome4);
         }
-        // if (page == "welcome5") {
-        //     setIsWelcomePage(welcome5);
-        // }
+        if (page == "welcome5") {
+            setIsWelcomePage(welcome5);
+        }
     };
 
     console.log(welcomePage.buttons);
 
     return (
         <div>
-            
             <SingleWelcomePage
                 classNameRender={welcomePage.name}
                 image1={welcomePage.image1}
@@ -132,6 +135,7 @@ const WelcomePage = (props) => {
                 greenDots={welcomePage.greenDots}
                 next={welcomePage.next}
                 back={welcomePage.back}
+                goBack={goBack}
                 skipWelcome={props.skipWelcome}
                 setWelcome={setIsWelcomePage}
                 ready={welcomePage.ready}
