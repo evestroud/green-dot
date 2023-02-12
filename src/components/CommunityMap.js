@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { GoogleMap, Marker, useLoadScript } from "@react-google-maps/api";
 import "./CommunityMap.css";
-import share from "./assets/share.png";
 import {
   collection,
   deleteDoc,
@@ -11,7 +10,7 @@ import {
   Timestamp,
   where,
 } from "firebase/firestore";
-import { db, auth } from "../firebase";
+import { db } from "../firebase";
 
 const MAPS_API_KEY = `${process.env.REACT_APP_MAPS_API_KEY}`;
 
@@ -31,7 +30,7 @@ const CommunityMap = ({ community, user, setUserLocation }) => {
       where("expiration", ">", Timestamp.now())
     );
 
-    const unsubscribe = onSnapshot(
+    onSnapshot(
       q,
       (QuerySnapshot) => {
         let markers = [];
@@ -64,32 +63,34 @@ const CommunityMap = ({ community, user, setUserLocation }) => {
 
   return (
     <div className="share-community">
-      <h2>Congratulations!  You can now see your community members on Green Dot. </h2>
+      <h2>
+        Congratulations! You can now see your community members on Green Dot.{" "}
+      </h2>
       <h4>Community Code: {community}</h4>
-    <div id="community-map">
-      {isLoaded ? (
-        <>
-          <p>Community code: {community}</p>
-          <GoogleMap
-            mapContainerClassName="map-container"
-            onTilesLoaded={() => {
-              setCenter(null);
-              setZoom(null);
-            }}
-            center={center}
-            zoom={zoom}
-            onLoad={(map) => (ref.current = map)}
-          >
-            {markers.map(({ lat, lng, id }) => (
-              <Marker position={{ lat, lng }} key={id} />
-            ))}
-          </GoogleMap>
-          <button onClick={stopShareLocation}>Stop sharing</button>
-        </>
-      ) : (
-        <h2>Loading map...</h2>
-      )}
-    </div>
+      <div id="community-map">
+        {isLoaded ? (
+          <>
+            <p>Community code: {community}</p>
+            <GoogleMap
+              mapContainerClassName="map-container"
+              onTilesLoaded={() => {
+                setCenter(null);
+                setZoom(null);
+              }}
+              center={center}
+              zoom={zoom}
+              onLoad={(map) => (ref.current = map)}
+            >
+              {markers.map(({ lat, lng, id }) => (
+                <Marker position={{ lat, lng }} key={id} />
+              ))}
+            </GoogleMap>
+            <button onClick={stopShareLocation}>Stop sharing</button>
+          </>
+        ) : (
+          <h2>Loading map...</h2>
+        )}
+      </div>
     </div>
   );
 };

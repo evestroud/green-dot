@@ -1,15 +1,6 @@
-import { GoogleMap, Marker, useLoadScript } from "@react-google-maps/api";
-import { useEffect, useRef, useState } from "react";
-import {
-  addDoc,
-  query,
-  collection,
-  onSnapshot,
-  deleteDoc,
-  doc,
-} from "firebase/firestore";
+import { useEffect, useState } from "react";
 import { onAuthStateChanged, signInAnonymously } from "firebase/auth";
-import { auth, db } from "./firebase";
+import { auth } from "./firebase";
 import "./App.css";
 import CommunitySelector from "./components/CommunitySelector";
 import WelcomePage from "./components/welcomeComponents/WelcomePage";
