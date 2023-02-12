@@ -10,7 +10,6 @@ const SingleWelcomePage = props => {
             </div>
             <div className="image1">
                 <img className={props.classNameRender} src={props.image1} />
-                {/* <img src={props.image1} /> */}
             </div>
             <div className="header-text">
                 <h1>

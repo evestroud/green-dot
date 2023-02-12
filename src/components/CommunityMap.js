@@ -18,7 +18,7 @@ const CommunityMap = ({ community, user, setUserLocation }) => {
     googleMapsApiKey: MAPS_API_KEY,
   });
   const [markers, setMarkers] = useState([]);
-  const [center, setCenter] = useState({ lat: 39, lng: -95 });
+  const [center, setCenter] = useState({ lat: 33.75, lng: -84.38 });
   const [zoom, setZoom] = useState(4);
   const ref = useRef(null);
 
@@ -40,6 +40,9 @@ const CommunityMap = ({ community, user, setUserLocation }) => {
   };
 
   return (
+    <div className="share-community">
+      <h2>Congratulations!  You can now see your community members on Green Dot. </h2>
+      <h4>Community Code: {community}</h4>
     <div id="community-map">
       {isLoaded ? (
         <>
@@ -62,6 +65,7 @@ const CommunityMap = ({ community, user, setUserLocation }) => {
       ) : (
         <h2>Loading map...</h2>
       )}
+    </div>
     </div>
   );
 };

@@ -71,7 +71,20 @@ h2 {
 }
 
 .welcome1 h1 {
-    margin-top: 10px;
+    margin-top: 15px;
+    margin-left: 0px;
+}
+
+.welcome1 .back-button {
+    display: none;
+}
+
+.welcome1 .image1 {
+    margin-top: -20px;
+}
+
+.welcome2 .image1 {
+    display: none;
 }
 
 .welcome2 .image2 {
@@ -89,6 +102,10 @@ h2 {
     margin-top: 40px;
 }
 
+.welcome3 .image1 {
+    display: none;
+}
+
 .welcome3 .image2 {
     padding-top: 55px;
     display: flex;
@@ -98,14 +115,26 @@ h2 {
     width: 350px;
 }
 
+.welcome4 .image1 {
+    display: none;
+}
+
 .welcome4 .image2 img {
     padding-top: 20px;
     width: 404px;
 }
 
+.welcome5 .image1 {
+    display: none;
+}
+
 .welcome5 .image2 img {
     padding-top: 20px;
     width: 404px;
+}
+
+.welcome6 .image1 {
+    display: none;
 }
 
 .welcome6 h1 {
@@ -118,18 +147,18 @@ h2 {
 }
 
 .welcome6 .header-text {
-    margin-top: -30px;
+    margin-top: -20px;
     margin-bottom: -20px;
 }
 
 .welcome6 .sub-text li {
-    font-size: 17px;
-    line-height: 20px;
+    font-size: 19px;
+    line-height: 25px;
     letter-spacing: 0.7px;
 }
 
 .ready-div {
-    padding-top: 20px;
+    padding-top: 15px;
     display: flex;
     justify-content: center;
 }
@@ -161,14 +190,4 @@ h2 {
 
 button {
     cursor: pointer;
-}
-
-.partial-dot-div {
-    display: flex;
-    justify-content: end;
-    margin-top: 120px;
-}
-
-.partial-dot {
-    height: 300px;
 }
