@@ -28,7 +28,6 @@ const WelcomePage = props => {
             </ul>
         ),
         image2: javajunction,
-        greenDots: "",
         ready: (
             <button
                 className="ready-button"
@@ -106,7 +105,6 @@ const WelcomePage = props => {
 
     return (
         <div>
-            
             <SingleWelcomePage
                 classNameRender={welcomePage.name}
                 image1={welcomePage.image1}

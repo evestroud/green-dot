@@ -199,8 +199,12 @@ button {
     .welcome1 .image1 {
         padding-top: -30px;
     }
+    .welcome1 .image2, welcome1 image3 {
+        display: none;
+    }
+  
     .welcome1 h1 {
-        font-size: 40px;
+        font-size: 45px;
     }
     .skip-next {
         margin-top: -80px;
@@ -217,5 +221,19 @@ button {
     }
     .welcome3 .image3 {
         display: none;
+    }
+
+    .welcome6 .green-dots img {
+        display: none;
+    }
+    .welcome6 .image2 {
+        margin-bottom: -5px;
+    }
+    .welcome6 h1 {
+        margin-top: 25px;
+        font-size: 29px;
+    }
+    .welcome6 .sub-text li {
+        font-size: 20px;
     }
 }
