@@ -3,6 +3,7 @@ import "./UserLocationShareScreen.css";
 import { db } from "../firebase";
 import { doc, getDoc, setDoc, serverTimestamp } from "firebase/firestore";
 import share from "../components/assets/share.png";
+import { MetaTags } from "react-meta-tags";
 
 const UserLocationShareScreen = ({ community, setUserLocation, user }) => {
     const shareLocation = () => {

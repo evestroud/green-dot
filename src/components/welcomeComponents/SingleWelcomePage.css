@@ -199,10 +199,11 @@ button {
     .welcome1 .image1 {
         padding-top: -30px;
     }
-    .welcome1 .image2, welcome1 image3 {
+    .welcome1 .image2,
+    welcome1 image3 {
         display: none;
     }
-  
+
     .welcome1 h1 {
         font-size: 45px;
     }
