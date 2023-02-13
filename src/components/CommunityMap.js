@@ -55,7 +55,7 @@ const CommunityMap = ({ community, user, setUserLocation }) => {
         }
       }
     );
-  }, [refreshListener]);
+  }, [isLoaded, refreshListener]);
 
   const zoomToFit = (markers) => {
     console.log(markers);
