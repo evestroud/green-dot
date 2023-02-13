@@ -39,7 +39,7 @@
 @media (max-width: 480px) {
     .share-community h2 {
         line-height: 25px;
-        margin-top: 0px;
+        margin-top: 10px;
     }
     #community-map {
         height: 400px;
