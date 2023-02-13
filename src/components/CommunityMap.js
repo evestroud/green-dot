@@ -38,6 +38,7 @@ const CommunityMap = ({ community, user, setUserLocation }) => {
           markers.push({ ...marker.data(), id: marker.id });
         });
         setMarkers(markers);
+        zoomToFit(markers);
       },
       (e) => {
         if (refreshListener < 6) {
@@ -56,6 +57,21 @@ const CommunityMap = ({ community, user, setUserLocation }) => {
     );
   }, [refreshListener]);
 
+  const zoomToFit = (markers) => {
+    console.log(markers);
+    if (markers.length === 1) {
+      setCenter(markers[0]);
+      setZoom(12);
+    } else {
+      const bounds = new window.google.maps.LatLngBounds();
+      markers.forEach(({ lat, lng }) => {
+        bounds.extend({ lat, lng });
+        console.log(bounds)
+      });
+      ref.current.fitBounds(bounds);
+    }
+  };
+
   const stopShareLocation = async () => {
     await deleteDoc(doc(db, "communities", community, "markers", user.uid));
     setUserLocation(false);
@@ -70,7 +86,6 @@ const CommunityMap = ({ community, user, setUserLocation }) => {
       <div id="community-map">
         {isLoaded ? (
           <>
-            <p>Community code: {community}</p>
             <GoogleMap
               mapContainerClassName="map-container"
               onTilesLoaded={() => {
