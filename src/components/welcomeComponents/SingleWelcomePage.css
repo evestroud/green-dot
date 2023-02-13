@@ -193,29 +193,29 @@ button {
 }
 
 @media (max-width: 480px) {
+    .image1 {
+        margin-right: -20px;
+    }
     .welcome1 .image1 {
-        padding-top: -20px;
+        padding-top: -30px;
     }
     .welcome1 h1 {
         font-size: 40px;
     }
     .skip-next {
-        background-color: yellow;
-        margin-top: -70px;
+        margin-top: -80px;
+        margin-right: -60px;
     }
     button {
         margin-right: 40px;
     }
     .green-dots {
-        margin-top: -70px;
+        margin-top: -80px;
     }
     .green-dots img {
         width: 200px;
     }
-
-
     .welcome3 .image3 {
-        display:none;
+        display: none;
     }
-
 }

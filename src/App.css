@@ -13,8 +13,12 @@
     overflow: hidden;
 }
 @media (max-width: 480px) {
+    body {
+        margin-left: 0;
+        margin-right: 0;
+        margin-bottom: 0;
+    }
     .App {
         all: unset;
-        height: 80vh;
     }
 }
