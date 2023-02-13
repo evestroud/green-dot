@@ -106,6 +106,7 @@ const WelcomePage = props => {
 
     return (
         <div>
+            
             <SingleWelcomePage
                 classNameRender={welcomePage.name}
                 image1={welcomePage.image1}

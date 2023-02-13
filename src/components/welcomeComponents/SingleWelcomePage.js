@@ -1,8 +1,16 @@
 import { useState, React } from "react";
 import "./SingleWelcomePage.css";
+import MetaTags from "react-meta-tags";
 
 const SingleWelcomePage = props => {
-    return <div className={props.classNameRender}>
+    return (
+        <div className={props.classNameRender}>
+            <MetaTags>
+                <meta
+                    name="viewport"
+                    content="width=device-width, height=device-height, initial-scale=1"
+                />
+            </MetaTags>
             <div className="back-button">
                 <button onClick={() => props.goBack(props.back)}>
                     {"<<"}
@@ -31,7 +39,10 @@ const SingleWelcomePage = props => {
                 <button className="skip" onClick={() => props.skipWelcome()}>
                     Skip Intro
                 </button>
-                <button className="next-page" onClick={() => props.setWelcome(props.next)}>
+                <button
+                    className="next-page"
+                    onClick={() => props.setWelcome(props.next)}
+                >
                     Next
                 </button>
             </div>
@@ -41,7 +52,8 @@ const SingleWelcomePage = props => {
             <div className="ready-div">
                 {props.ready}
             </div>
-        </div>;
+        </div>
+    );
 };
 
 export default SingleWelcomePage;
