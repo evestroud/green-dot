@@ -30,7 +30,6 @@ function App() {
 
   return user ? (
     <div className="App">
-      {/* <h1>Green Dot.</h1> */}
       {welcome == true ? (
         <WelcomePage skipWelcome={skipWelcome} />
       ) : community ? (

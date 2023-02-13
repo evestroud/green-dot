@@ -1,23 +1,37 @@
 #community-map {
-  width: 404px;
-  height: 450px;
+    width: 404px;
+    height: 450px;
 }
 
 .map-container {
-  height: 100%;
-  width: 100%;
+    height: 100%;
+    width: 100%;
 }
 
 .share-community h2 {
-  font-size: 20px;
-  margin-left: 35px;
-  margin-top: 20px;
-  margin-right: 60px;
-  line-height: 40px;
+    font-size: 20px;
+    margin-left: 35px;
+    margin-top: 20px;
+    margin-right: 60px;
+    line-height: 40px;
 }
 
 .share-community h4 {
-  margin-left: 35px;
-  background-color: yellow;
-  width: 170px;
+    margin-left: 35px;
+    display: inline-block;
+    background-color: yellow;
+    margin-top: -25px;
+}
+
+.stop {
+    display: flex;
+    justify-content: center;
+}
+.stop button {
+    all: unset;
+    cursor: pointer;
+    padding-top: 22px;
+}
+.stop img {
+    width: 220px;
 }

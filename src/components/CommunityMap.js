@@ -11,6 +11,7 @@ import {
   where,
 } from "firebase/firestore";
 import { db } from "../firebase";
+import stopsharing from "../components/assets/stopsharing.png";
 
 const MAPS_API_KEY = `${process.env.REACT_APP_MAPS_API_KEY}`;
 
@@ -100,7 +101,9 @@ const CommunityMap = ({ community, user, setUserLocation }) => {
                 <Marker position={{ lat, lng }} key={id} />
               ))}
             </GoogleMap>
-            <button onClick={stopShareLocation}>Stop sharing</button>
+            <div className="stop">
+            <button onClick={stopShareLocation}><img src={stopsharing}/></button>
+          </div>
           </>
         ) : (
           <h2>Loading map...</h2>
