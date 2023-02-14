@@ -45,10 +45,10 @@ const CommunityMap = ({ community, user, setUserLocation }) => {
         if (refreshListener < 6) {
           setTimeout(() => {
             console.log(
-              "An error has occurred, trying again in ten seconds..."
+              "An error has occurred, trying again..."
             );
             setRefreshListener(refreshListener + 1);
-          });
+          }, 1000);
         } else {
           console.log("Aborting retry");
           console.log(e);
@@ -59,17 +59,18 @@ const CommunityMap = ({ community, user, setUserLocation }) => {
   }, [isLoaded, refreshListener]);
 
   const zoomToFit = (markers) => {
-    console.log(markers);
-    if (markers.length === 1) {
-      setCenter(markers[0]);
-      setZoom(12);
-    } else {
-      const bounds = new window.google.maps.LatLngBounds();
-      markers.forEach(({ lat, lng }) => {
-        bounds.extend({ lat, lng });
-        console.log(bounds)
-      });
-      ref.current.fitBounds(bounds);
+    if (isLoaded) {
+      if (markers.length === 1) {
+        setCenter(markers[0]);
+        setZoom(12);
+      } else {
+        const bounds = new window.google.maps.LatLngBounds();
+        markers.forEach(({ lat, lng }) => {
+          bounds.extend({ lat, lng });
+          console.log(bounds);
+        });
+        ref.current.fitBounds(bounds);
+      }
     }
   };
 
