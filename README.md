@@ -18,7 +18,7 @@ Clone this repository.
 Install React with $ yarn add react 
 Add Firestore configurations to a firebase.js file.
 Add the Google Maps API key as REACT_APP_MAPS_API_KEY to the .env file. 
-Start the server by running `$ yarn start`
+Start the server by running `yarn start`
 
 Green Dot is developed by Ada Developers Academy cohort 18 students - Eve Stroud and Jamaica Yancy
 

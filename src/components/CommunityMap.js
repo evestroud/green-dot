@@ -103,8 +103,10 @@ const CommunityMap = ({ community, user, setUserLocation }) => {
               ))}
             </GoogleMap>
             <div className="stop">
-            <button onClick={stopShareLocation}><img src={stopsharing}/></button>
-          </div>
+              <button onClick={stopShareLocation}>
+                <img src={stopsharing} />
+              </button>
+            </div>
           </>
         ) : (
           <h2>Loading map...</h2>
