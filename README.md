@@ -6,6 +6,8 @@ Green Dot is a private location sharing web app.  Users enter a community code o
 
 Users can stop and restart location sharing at any time, however they must be actively sharing a location with a community to view the other user locations.
 
+Deployed version: https://green-dot.herokuapp.com/
+
 ### Dependencies:
 * @react-google-maps/api - 2.18.1
 * firebase - 9.17.1
